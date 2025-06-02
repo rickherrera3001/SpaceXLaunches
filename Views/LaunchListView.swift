@@ -25,15 +25,16 @@ struct LaunchListView: View {
                         .foregroundColor(.red)
                 } else {
                     List(viewModel.launches, id: \.id) { launch in
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 4) {
                             Text(launch.missionName)
                                 .font(.headline)
-                            Text(launch.siteName)
+                            Text("Site: \(launch.siteName)")
                                 .font(.subheadline)
-                            Text(formatDate(launch.launchDateUTC))
+                            Text("Launch Date: \(formatDate(launch.launchDateUTC))")
                                 .font(.caption)
                                 .foregroundColor(.gray)
                         }
+                        .padding(.vertical, 4)
                     }
                 }
             }
