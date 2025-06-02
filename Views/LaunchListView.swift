@@ -5,9 +5,6 @@
 //  Created by Ricardo Ivan Herrera Rocha on 01/06/25.
 //
 
-// Lista de lanzamientos
-//List of releases
-
 import SwiftUI
 import SwiftData
 
@@ -17,41 +14,79 @@ struct LaunchListView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
-                if viewModel.isLoading {
-                    ProgressView("Loading launches...")
-                } else if let error = viewModel.error {
-                    Text("Error: \(error)")
-                        .foregroundColor(.red)
-                } else {
-                    List(viewModel.launches, id: \.id) { launch in
+            if viewModel.isLoading {
+                ProgressView("Cargando lanzamientos...")
+                    .navigationTitle("Launches")
+            } else if let error = viewModel.error {
+                Text("Error: \(error)")
+                    .foregroundColor(.red)
+                    .navigationTitle("Launches")
+            } else {
+                List(viewModel.launches) { launch in
+                    HStack(alignment: .top, spacing: 12) {
+                        // Imagen del parche de misión
+                        if let patchUrl = launch.links.missionPatch,
+                           let url = URL(string: patchUrl) {
+                            AsyncImage(url: url) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: 60, height: 60)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60, height: 60)
+                                        .cornerRadius(8)
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .foregroundColor(.gray)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                        }
+
                         VStack(alignment: .leading, spacing: 4) {
                             Text(launch.missionName)
                                 .font(.headline)
-                            Text("Site: \(launch.siteName)")
+                            Text(launch.launchSite.siteName.rawValue)
                                 .font(.subheadline)
-                            Text("Launch Date: \(formatDate(launch.launchDateUTC))")
+                            Text(formatDate(launch.launchDateUTC))
                                 .font(.caption)
                                 .foregroundColor(.gray)
                         }
-                        .padding(.vertical, 4)
                     }
+                    .padding(8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color(.systemBackground))
+                            .shadow(radius: 1)
+                    )
                 }
+                .listStyle(PlainListStyle())
+                .navigationTitle("Launches")
             }
-            .navigationTitle("Launches")
         }
         .onAppear {
             viewModel.loadLaunchesIfNeeded(modelContext: modelContext)
         }
     }
 
+    // 🗓️ Formatea fecha tipo: lunes, ene. 6, 2014
     private func formatDate(_ utcString: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        if let date = formatter.date(from: utcString) {
-            formatter.dateFormat = "dd-MM-yyyy"
-            return formatter.string(from: date)
+        let inputFormatter = ISO8601DateFormatter()
+        inputFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+        let outputFormatter = DateFormatter()
+        outputFormatter.locale = Locale(identifier: "es_MX")
+        outputFormatter.dateFormat = "EEEE, MMM. d, yyyy"
+
+        if let date = inputFormatter.date(from: utcString) {
+            return outputFormatter.string(from: date).capitalized
         }
-        return utcString
+        return "Fecha desconocida"
     }
 }
