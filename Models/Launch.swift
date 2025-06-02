@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: - RocketElement
-struct RocketElement: Encodable {
+struct RocketElement: Codable {
     let flightNumber: Int
     let missionName: String
     let missionID: [String]
