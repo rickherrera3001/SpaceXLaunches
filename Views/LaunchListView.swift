@@ -23,48 +23,50 @@ struct LaunchListView: View {
                     .navigationTitle("Launches")
             } else {
                 List(viewModel.launches) { launch in
-                    HStack(alignment: .top, spacing: 12) {
-                        // Imagen del parche de misión
-                        if let patchUrl = launch.links.missionPatch,
-                           let url = URL(string: patchUrl) {
-                            AsyncImage(url: url) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                        .frame(width: 60, height: 60)
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60, height: 60)
-                                        .cornerRadius(8)
-                                case .failure:
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .frame(width: 60, height: 60)
-                                        .foregroundColor(.gray)
-                                @unknown default:
-                                    EmptyView()
+                    NavigationLink(destination: LaunchDetailView(launch: launch)) {
+                        HStack(alignment: .top, spacing: 12) {
+                            // Imagen del parche de misión
+                            if let patchUrl = launch.links.missionPatch,
+                               let url = URL(string: patchUrl) {
+                                AsyncImage(url: url) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                            .frame(width: 60, height: 60)
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 60, height: 60)
+                                            .cornerRadius(8)
+                                    case .failure:
+                                        Image(systemName: "photo")
+                                            .resizable()
+                                            .frame(width: 60, height: 60)
+                                            .foregroundColor(.gray)
+                                    @unknown default:
+                                        EmptyView()
+                                    }
                                 }
                             }
-                        }
 
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(launch.missionName)
-                                .font(.headline)
-                            Text(launch.launchSite.siteName.rawValue)
-                                .font(.subheadline)
-                            Text(formatDate(launch.launchDateUTC))
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(launch.missionName)
+                                    .font(.headline)
+                                Text(launch.launchSite.siteName.rawValue)
+                                    .font(.subheadline)
+                                Text(formatDate(launch.launchDateUTC))
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
                         }
+                        .padding(8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color(.systemBackground))
+                                .shadow(radius: 1)
+                        )
                     }
-                    .padding(8)
-                    .background(
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color(.systemBackground))
-                            .shadow(radius: 1)
-                    )
                 }
                 .listStyle(PlainListStyle())
                 .navigationTitle("Launches")
