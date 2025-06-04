@@ -7,17 +7,22 @@
 
 import Foundation
 
-enum APIRequestValidator {
-    private static let lastFetchKey = "lastAPIFetchDate"
+struct APIRequestValidator {
+    
+    private static let lastFetchKey = "LastAPIFetchDate"
 
     static func shouldFetchData() -> Bool {
-        guard let lastDate = UserDefaults.standard.object(forKey: lastFetchKey) as? Date else {
-            return true
+        let defaults = UserDefaults.standard
+
+        if let lastFetch = defaults.object(forKey: lastFetchKey) as? Date {
+            return !Calendar.current.isDateInToday(lastFetch)
         }
-        return !Calendar.current.isDateInToday(lastDate)
+        
+        return true
     }
 
     static func markAPICallDone() {
-        UserDefaults.standard.set(Date(), forKey: lastFetchKey)
+        let defaults = UserDefaults.standard
+        defaults.set(Date(), forKey: lastFetchKey)
     }
 }

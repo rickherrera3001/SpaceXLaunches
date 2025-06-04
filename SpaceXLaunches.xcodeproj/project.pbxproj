@@ -24,6 +24,10 @@
 		D0A4C6C32DED3BF800DC5560 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D0A4C6C22DED3BF800DC5560 /* Alamofire */; };
 		D0A4C6C52DED3D5C00DC5560 /* APIRequestValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6C42DED3D5C00DC5560 /* APIRequestValidator.swift */; };
 		D0A4C6C72DED3F6200DC5560 /* LaunchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6C62DED3F6200DC5560 /* LaunchEntity.swift */; };
+		D0BA36912DEEB124005A1EC1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA36902DEEB124005A1EC1 /* SafariView.swift */; };
+		D0D790452DEFC4C900FC730C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D790442DEFC4C900FC730C /* LoginView.swift */; };
+		D0D790492DEFCBF700FC730C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D790482DEFCBF700FC730C /* ForgotPasswordView.swift */; };
+		D0D7904B2DEFCC7E00FC730C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7904A2DEFCC7E00FC730C /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		D0A4C6BE2DED056500DC5560 /* YouTubeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeHelper.swift; sourceTree = "<group>"; };
 		D0A4C6C42DED3D5C00DC5560 /* APIRequestValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestValidator.swift; sourceTree = "<group>"; };
 		D0A4C6C62DED3F6200DC5560 /* LaunchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchEntity.swift; sourceTree = "<group>"; };
+		D0BA36902DEEB124005A1EC1 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		D0D790442DEFC4C900FC730C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D0D790482DEFCBF700FC730C /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		D0D7904A2DEFCC7E00FC730C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -131,6 +139,10 @@
 				D0A4C6B32DED04F500DC5560 /* LaunchListView.swift */,
 				D0A4C6B52DED050C00DC5560 /* LaunchDetailView.swift */,
 				D0A4C6B72DED051B00DC5560 /* WebView.swift */,
+				D0BA36902DEEB124005A1EC1 /* SafariView.swift */,
+				D0D790442DEFC4C900FC730C /* LoginView.swift */,
+				D0D790482DEFCBF700FC730C /* ForgotPasswordView.swift */,
+				D0D7904A2DEFCC7E00FC730C /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,11 +254,15 @@
 				D0A4C6BF2DED056500DC5560 /* YouTubeHelper.swift in Sources */,
 				D0A4C6AD2DED049E00DC5560 /* LaunchDetailViewModel.swift in Sources */,
 				D0A4C6A02DED044500DC5560 /* DataManager.swift .swift in Sources */,
+				D0BA36912DEEB124005A1EC1 /* SafariView.swift in Sources */,
 				D0A4C6B42DED04F500DC5560 /* LaunchListView.swift in Sources */,
+				D0D790492DEFCBF700FC730C /* ForgotPasswordView.swift in Sources */,
 				D0A4C6B62DED050C00DC5560 /* LaunchDetailView.swift in Sources */,
+				D0D7904B2DEFCC7E00FC730C /* SignUpView.swift in Sources */,
 				D0A4C6992DED03F200DC5560 /* LaunchService.swift .swift in Sources */,
 				D0A4C6962DED03B300DC5560 /* Launch.swift in Sources */,
 				D0A4C6B82DED051B00DC5560 /* WebView.swift in Sources */,
+				D0D790452DEFC4C900FC730C /* LoginView.swift in Sources */,
 				D0A4C6BB2DED053C00DC5560 /* DateFormatter+Extensions.swift .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

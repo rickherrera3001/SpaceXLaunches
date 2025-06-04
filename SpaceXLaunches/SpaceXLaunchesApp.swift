@@ -25,7 +25,7 @@ struct SpaceXLaunchesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
         .modelContainer(sharedModelContainer)
     }

@@ -5,51 +5,54 @@
 //  Created by Ricardo Ivan Herrera Rocha on 01/06/25.
 //
 
-// Detalle del lanzamiento
-// Release details
-
-import Foundation
 import SwiftUI
 
 struct LaunchDetailView: View {
-    let launch: RocketElement
+    let launch: LaunchEntity
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Imagen principal
-                if let urlString = launch.links.missionPatch, let url = URL(string: urlString) {
-                    AsyncImage(url: url) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: .infinity)
-                            .cornerRadius(12)
-                    } placeholder: {
-                        ProgressView()
+                if let imageUrl = launch.imageUrl,
+                   let url = URL(string: imageUrl) {
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(12)
+                        default:
+                            ProgressView()
+                        }
                     }
                 }
 
-                Text(launch.missionName)
+                Text("🚀 \(launch.missionName)")
                     .font(.title)
                     .bold()
 
-                Text("Site: \(launch.launchSite.siteNameLong.rawValue)")
+                Text("📍 Lugar de lanzamiento:")
                     .font(.subheadline)
+                    .foregroundColor(.secondary)
+                Text(launch.siteName)
+                    .font(.body)
 
-                Text("Date: \(launch.launchDateUTC)")
+                Text("🗓 Fecha:")
                     .font(.subheadline)
+                    .foregroundColor(.secondary)
+                Text(launch.launchDateUTC)
+                    .font(.body)
 
-                if let details = launch.details {
-                    Text(details)
-                        .padding(.top, 8)
+                if let video = launch.videoUrl,
+                   let url = URL(string: video) {
+                    Link("🎥 Ver video del lanzamiento", destination: url)
+                        .padding(.top, 10)
                 }
-
-                Spacer()
             }
             .padding()
         }
-        .navigationTitle("Details")
+        .navigationTitle("Detalles")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
