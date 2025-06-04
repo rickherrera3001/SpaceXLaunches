@@ -5,11 +5,25 @@
 //  Created by Ricardo Ivan Herrera Rocha on 01/06/25.
 //
 
+
+//
+//  SpaceXLaunchesApp.swift
+//  SpaceXLaunches
+//
+//  Created by Ricardo Ivan Herrera Rocha on 01/06/25.
+//
+
 import SwiftUI
 import SwiftData
+import FirebaseCore
 
 @main
 struct SpaceXLaunchesApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +39,10 @@ struct SpaceXLaunchesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            AuthCoordinatorView()
         }
         .modelContainer(sharedModelContainer)
     }
 }
+
+
