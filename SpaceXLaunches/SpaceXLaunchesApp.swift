@@ -40,9 +40,9 @@ struct SpaceXLaunchesApp: App {
     var body: some Scene {
         WindowGroup {
             AuthCoordinatorView()
+                .modelContainer(for: LaunchEntity.self)
+
         }
         .modelContainer(sharedModelContainer)
     }
 }
-
-

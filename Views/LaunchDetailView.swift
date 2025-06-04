@@ -9,7 +9,7 @@ import SwiftUI
 import SafariServices
 
 struct LaunchDetailView: View {
-    let launch: LaunchModel
+    let launch: LaunchEntity
     @State private var showSafari = false
     @State private var selectedURL: URL? = nil
 
@@ -24,16 +24,16 @@ struct LaunchDetailView: View {
 
                 VStack(alignment: .leading, spacing: 8) {
                     Label("Date: \(formatDate(from: launch.launchDate))", systemImage: "calendar")
-                    Label("Site: \(launch.launchSite.siteNameLong)", systemImage: "mappin.and.ellipse")
-                    Label("Rocket name: \(launch.rocket.rocketName)", systemImage: "paperplane")
-                    Label("Rocket type: \(launch.rocket.rocketType)", systemImage: "gearshape")
+                    Label("Site: \(launch.siteNameLong)", systemImage: "mappin.and.ellipse")
+                    Label("Rocket name: \(launch.rocketName)", systemImage: "paperplane")
+                    Label("Rocket type: \(launch.rocketType)", systemImage: "gearshape")
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)
 
-                if !launch.links.flickrImages.isEmpty {
+                if !launch.flickrImages.isEmpty {
                     TabView {
-                        ForEach(launch.links.flickrImages, id: \.self) { imageUrl in
+                        ForEach(launch.flickrImages, id: \.self) { imageUrl in
                             if let url = URL(string: imageUrl) {
                                 AsyncImage(url: url) { image in
                                     image
@@ -68,7 +68,7 @@ struct LaunchDetailView: View {
                 }
 
                 VStack {
-                    if let videoLink = launch.links.videoLink,
+                    if let videoLink = launch.videoLink,
                        let url = URL(string: videoLink) {
                         Link(destination: url) {
                             HStack {
@@ -84,7 +84,7 @@ struct LaunchDetailView: View {
                         }
                     }
 
-                    if let articleLink = launch.links.articleLink {
+                    if let articleLink = launch.articleLink {
                         Button(action: {
                             selectedURL = URL(string: articleLink)
                             showSafari = true

@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct AuthCoordinatorView: View {
+    @Environment(\.modelContext) private var modelContext
+
     @StateObject private var loginViewModel = LoginViewModel()
     @State private var path = NavigationPath()
 
@@ -14,7 +16,7 @@ struct AuthCoordinatorView: View {
         NavigationStack(path: $path) {
             Group {
                 if loginViewModel.isAuthenticated {
-                    LaunchListView()
+                    LaunchListView(modelContext: modelContext)
                 } else {
                     LoginView(viewModel: loginViewModel)
                 }
@@ -26,7 +28,7 @@ struct AuthCoordinatorView: View {
                 case .forgotPassword:
                     ForgotPasswordView(viewModel: loginViewModel)
                 case .home:
-                    LaunchListView()
+                    LaunchListView(modelContext: modelContext)
                 default:
                     EmptyView()
                 }
