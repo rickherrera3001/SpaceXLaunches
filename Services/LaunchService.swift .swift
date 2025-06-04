@@ -1,3 +1,11 @@
+    //
+    //  LaunchService.swift
+    //  SpaceXLaunches
+    //
+    //  Created by Ricardo Ivan Herrera Rocha on 01/06/25.
+    //
+
+
 //
 //  LaunchService.swift
 //  SpaceXLaunches
@@ -6,28 +14,20 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftData
-
 
 class LaunchService {
     static let shared = LaunchService()
     
     private init() {}
 
-    private let url = "https://api.spacexdata.com/v3/launches/past"
-
     func fetchLaunchesIfNeeded(modelContext: ModelContext, completion: @escaping (Result<[LaunchEntity], Error>) -> Void) {
-        guard APIRequestValidator.shouldFetchData() else {
-            print("✅ Los datos ya fueron cargados hoy")
-            completion(.success([])) // Puedes cargar desde SwiftData si lo deseas
-            return
-        }
-
-        AF.request(url).responseDecodable(of: [LaunchModel].self) { response in
-            switch response.result {
+        
+        // 🔄 Llama a la nueva APIService
+        APIService.shared.fetchPastLaunches { result in
+            switch result {
             case .success(let launches):
-                // Mapea y guarda
+                // 🧠 Mapea los datos a entidades locales
                 let entities = launches.map {
                     LaunchEntity(
                         id: $0.id,
@@ -39,12 +39,13 @@ class LaunchService {
                     )
                 }
 
+                // 💾 Guarda en SwiftData
                 for entity in entities {
                     modelContext.insert(entity)
                 }
-                APIRequestValidator.markAPICallDone()
 
                 completion(.success(entities))
+
             case .failure(let error):
                 completion(.failure(error))
             }

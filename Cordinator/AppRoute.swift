@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AppRoute {
+enum AppRoute: String, Hashable {
     case login
     case signUp
     case forgotPassword

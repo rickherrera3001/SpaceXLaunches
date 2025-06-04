@@ -4,8 +4,6 @@
 //
 //  Created by Ricardo Ivan Herrera Rocha on 03/06/25.
 //
-
-import Foundation
 import SwiftUI
 
 struct AuthCoordinatorView: View {
@@ -25,13 +23,10 @@ struct AuthCoordinatorView: View {
                 switch route {
                 case .signUp:
                     SignUpView(viewModel: loginViewModel)
-
                 case .forgotPassword:
                     ForgotPasswordView(viewModel: loginViewModel)
-
                 case .home:
                     LaunchListView()
-
                 default:
                     EmptyView()
                 }

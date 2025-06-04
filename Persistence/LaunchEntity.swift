@@ -14,7 +14,7 @@ class LaunchEntity {
     var missionName: String
     var siteName: String
     var launchDateUTC: String
-    var imageUrl: String?         // Tomaremos la primera imagen de Flickr si existe
+    var imageUrl: String?       
     var videoUrl: String?
 
     init(id: Int, missionName: String, siteName: String, launchDateUTC: String, imageUrl: String?, videoUrl: String?) {
