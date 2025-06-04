@@ -11,12 +11,9 @@
 		D0A4C6A02DED044500DC5560 /* DataManager.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C69F2DED044500DC5560 /* DataManager.swift .swift */; };
 		D0A4C6A92DED046D00DC5560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A4C6A22DED046D00DC5560 /* Assets.xcassets */; };
 		D0A4C6AB2DED048900DC5560 /* LaunchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6AA2DED048900DC5560 /* LaunchListViewModel.swift */; };
-		D0A4C6AD2DED049E00DC5560 /* LaunchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6AC2DED049E00DC5560 /* LaunchDetailViewModel.swift */; };
 		D0A4C6B42DED04F500DC5560 /* LaunchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6B32DED04F500DC5560 /* LaunchListView.swift */; };
 		D0A4C6B62DED050C00DC5560 /* LaunchDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6B52DED050C00DC5560 /* LaunchDetailView.swift */; };
 		D0A4C6BB2DED053C00DC5560 /* DateFormatter+Extensions.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6BA2DED053C00DC5560 /* DateFormatter+Extensions.swift .swift */; };
-		D0A4C6BD2DED054F00DC5560 /* UserDefaults+Helper.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6BC2DED054F00DC5560 /* UserDefaults+Helper.swift .swift */; };
-		D0A4C6BF2DED056500DC5560 /* YouTubeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6BE2DED056500DC5560 /* YouTubeHelper.swift */; };
 		D0A4C6C32DED3BF800DC5560 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D0A4C6C22DED3BF800DC5560 /* Alamofire */; };
 		D0A4C6C72DED3F6200DC5560 /* LaunchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A4C6C62DED3F6200DC5560 /* LaunchEntity.swift */; };
 		D0BA36912DEEB124005A1EC1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BA36902DEEB124005A1EC1 /* SafariView.swift */; };
@@ -40,12 +37,9 @@
 		D0A4C69F2DED044500DC5560 /* DataManager.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataManager.swift .swift"; sourceTree = "<group>"; };
 		D0A4C6A22DED046D00DC5560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0A4C6AA2DED048900DC5560 /* LaunchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListViewModel.swift; sourceTree = "<group>"; };
-		D0A4C6AC2DED049E00DC5560 /* LaunchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailViewModel.swift; sourceTree = "<group>"; };
 		D0A4C6B32DED04F500DC5560 /* LaunchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchListView.swift; sourceTree = "<group>"; };
 		D0A4C6B52DED050C00DC5560 /* LaunchDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDetailView.swift; sourceTree = "<group>"; };
 		D0A4C6BA2DED053C00DC5560 /* DateFormatter+Extensions.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift .swift"; sourceTree = "<group>"; };
-		D0A4C6BC2DED054F00DC5560 /* UserDefaults+Helper.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift .swift"; sourceTree = "<group>"; };
-		D0A4C6BE2DED056500DC5560 /* YouTubeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeHelper.swift; sourceTree = "<group>"; };
 		D0A4C6C62DED3F6200DC5560 /* LaunchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchEntity.swift; sourceTree = "<group>"; };
 		D0BA36902DEEB124005A1EC1 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		D0C7FC6E2DF0CB44002F3F7E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -137,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				D0A4C6AA2DED048900DC5560 /* LaunchListViewModel.swift */,
-				D0A4C6AC2DED049E00DC5560 /* LaunchDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -156,8 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				D0A4C6BA2DED053C00DC5560 /* DateFormatter+Extensions.swift .swift */,
-				D0A4C6BC2DED054F00DC5560 /* UserDefaults+Helper.swift .swift */,
-				D0A4C6BE2DED056500DC5560 /* YouTubeHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -278,12 +269,9 @@
 				D0F8822B2DF016E8001F25F0 /* User.swift in Sources */,
 				D0C7FC6F2DF0CB44002F3F7E /* APIService.swift in Sources */,
 				D0D7904E2DEFF5E700FC730C /* LoginViewModel.swift in Sources */,
-				D0A4C6BD2DED054F00DC5560 /* UserDefaults+Helper.swift .swift in Sources */,
 				D0A4C6C72DED3F6200DC5560 /* LaunchEntity.swift in Sources */,
 				D0A4C6AB2DED048900DC5560 /* LaunchListViewModel.swift in Sources */,
 				D0F8821F2DF00042001F25F0 /* AuthCoordinatorView.swift in Sources */,
-				D0A4C6BF2DED056500DC5560 /* YouTubeHelper.swift in Sources */,
-				D0A4C6AD2DED049E00DC5560 /* LaunchDetailViewModel.swift in Sources */,
 				D0A4C6A02DED044500DC5560 /* DataManager.swift .swift in Sources */,
 				D0BA36912DEEB124005A1EC1 /* SafariView.swift in Sources */,
 				D0A4C6B42DED04F500DC5560 /* LaunchListView.swift in Sources */,
